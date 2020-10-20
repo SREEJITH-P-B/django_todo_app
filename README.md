@@ -1,4 +1,4 @@
-1. Install python 
+1. Install python <br>
 2.git clone
 3.cd django_todo_app
 4.pip install virtualenv
