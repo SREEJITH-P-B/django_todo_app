@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Event List</h1>
+
+<form action="{% url 'details' %}" method="post">
+{% csrf_token %}
+<label for="text">Text:</label>
+<input type="text" id="text" name="text">
+
+<input type="submit" value="Register"/>
+</form>
+
+
+
+<table>
+    
+    {% if results  %} 
+        <h1>Details</h1><br>
+        <tr>
+            <th>Text</th>
+       
+        </tr>
+    
+    
+        {% for item in results %}
+        <tr  onclick="window.location='{% url 'completed' item.id %}';">
+            {% if item.completed  %} 
+                <td><input type="checkbox" checked ></td>
+            {% else %}
+                <td><input type="checkbox" unchecked ></td>
+            {% endif %}
+        
+            <td>{{ item.text }}</td>
+        
+       
+        </tr>
+    
+        {% endfor %}
+        </table>
+        <br><center>
+        <button type="button" onclick="window.location='{% url 'deleted'  %}';" >Delete</button></center>
+    {% endif %}
+
+</body>
+</html>
